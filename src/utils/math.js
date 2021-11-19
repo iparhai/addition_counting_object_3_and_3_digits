@@ -69,7 +69,7 @@ const getRandomNumber = range => {
     if (sessionData.dif == null || sessionData.dif == "b") {
         range = 300
         min = 100
-        eq = ((Math.random() * (range - min)) + 1).toFixed()
+        eq = ((Math.random() * (range - min)) + min).toFixed()
     }
     else if (sessionData.dif == "i") {
         range = 700
