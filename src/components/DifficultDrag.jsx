@@ -19,6 +19,7 @@ import { useEffect } from 'react';
 import { DragDropContainer, DropTarget } from 'react-drag-drop-container';
 import ball10 from '../assets/10.svg'
 import ball1 from '../assets/1.svg'
+import ball100 from '../assets/100.svg'
 
 
 // import _6  from '../assets/sounds/_6.mp3';
@@ -168,7 +169,10 @@ const Drop = (props) => {
                                         images.filter(item => item !== image)
                                     )
                                     playRemoveEffect()
-                                    if (image.src.includes("10")) {
+                                    if (image.src.includes("100")) {
+                                        props.decCount(100)
+                                    }
+                                    else if (image.src.includes("10")) {
                                         props.decCount(10)
                                     }
                                     else {
@@ -183,6 +187,20 @@ const Drop = (props) => {
                 </DropTarget>
             </div>
             <div>
+                <DragDropContainer targetKey="me"
+                    onDragStart={() => {
+                        setCurrentImage(ball100)
+                        setToIncrement(100)
+                    }}
+                    ref={e => targetImage.current = e}
+                >
+
+                    <img
+                        alt="lion"
+                        src={ball100}
+                        className={"noselect  questionImage "}
+                    />
+                </DragDropContainer>
                 <DragDropContainer targetKey="me"
                     onDragStart={() => {
                         setCurrentImage(ball10)
@@ -211,9 +229,9 @@ const Drop = (props) => {
                         alt="lion"
                         src={ball1}
                         className={"noselect  questionImage "}
-                        ref={draggableImage}
                     />
                 </DragDropContainer>
+
             </div>
 
 
